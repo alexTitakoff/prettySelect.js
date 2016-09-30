@@ -1,0 +1,45 @@
+
+html {
+	background: #282E32;
+}
+
+
+.cont {
+	position: relative;
+	top: 20%;
+	top: 300px;
+}
+
+.custom_select {
+	width: 300px;
+	margin: 0 auto;
+}
+
+.custom_select .selected_option .option {
+	border-top: 2px  solid #F5871F;
+	color:  #CF731B;	
+
+
+}
+
+.custom_select .option {
+	padding: 0px 20px; 
+	height: 40px;
+	line-height: 40px;
+	border: 2px solid #F5871F;
+	border-top: none;
+	color: #6D6D6D;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.custom_select  .wrap_options {
+	height: 0px;
+	overflow: hidden;
+	transition: all 0.2s ease-out;
+}
+
+.custom_select .wrap_options.active {		
+	overflow: hidden;
+	transition: all 0.2s ease-out;
+}

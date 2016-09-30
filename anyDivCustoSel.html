@@ -2,59 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>pretty simple custom select</title>
+	<link rel="stylesheet" href="css/style.css">
+	<title>Pretty Simple Custom Selects</title>
 </head>
 
-
-<style>
-	
-
-	html {
-		background: #282E32;
-	}
-
-
-	.cont {
-		position: relative;
-		top: 20%;
-		top: 300px;
-	}
-
-	.custom_select {
-		width: 300px;
-		margin: 0 auto;
-	}
-
-	.selected_option .option {
-		border-top: 2px  solid #F5871F;
-		color:  #CF731B;	
-
-	}
-
-	.option {
-		padding: 0px 20px; 
-		height: 40px;
-		line-height: 40px;
-		border: 2px solid #F5871F;
-		border-top: none;
-		color: #6D6D6D;
-		box-sizing: border-box;
-	}
-	
-	.wrap_options {
-		height: 0px;
-		overflow: hidden;
-		transition: all 0.2s ease-out;
-	}
-
-	.wrap_options.active {		
-		overflow: hidden;
-		transition: all 0.2s ease-out;
-	}
-
-	
-
-</style>
 <body> 
 
 
@@ -87,125 +38,34 @@
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="js/prettyselect.js" ></script>
 
 	<script>
 		//API
 
+		//initializeCustomSelect();
+
 		//user inint
-		$('.any_item_wrap').addClass('custom_select');
+		$('.any_item_wrap').customizeSelect();
+		$('.another_select').customizeSelect();
 
 
-		//user destroy 
-		var destroyCustomSelect = $('.any_item_wrap');
-		//destroySelect(selectorDestr);
 
 
-	</script>
+		//user destroy   example below(uncomment)
+			//var destroyCustomSelect = $('.any_item_wrap');
+			//destroySelect(selectorDestr);
 
-
-	<script>
-
-		$( window ).resize(function() {
-			if($(document).width() < 1024) {
-				console.log('малые разрешения');
-				if($('.any_item_wrap').hasClass('custom_select')){
-
-				}else {
-					$('.any_item_wrap').css('display', 'block').addClass('custom_select');
-					initializeSelect();
-				}
-
-
-			}else {
-				destroySelect();
-				$('.any_item_wrap').css('display', 'block').removeClass('custom_select');
-			}
-
-		});
-
-		if($(document).width() < 1024) {
-		//console.log('малые разрешения');
-		$('.any_item_wrap').css('display', 'block').addClass('custom_select');
-		initializeSelect();
-	}
-	//selects
-
-	//обернуть опшины  
-	//$('.option').wrapAll('<div class="wrap_options"></div>');
-	//инициализация селекта 
+		</script>
 
 
 
 
 
-	initializeCustomSelect();
-
-
-	function initializeCustomSelect() {	
-		console.log('начало инициализации');
-		$('.custom_select').each(function() {
-			$(this).children().wrap('<div class="option"></div>');
-			$('<div class="selected_option"></div>').prependTo(this);
-			$(this).find('.option').wrapAll('<div class="wrap_options"></div>');
-			var thisSelected = $(this).find('.selected_option');
-			$(this).find('.option').eq(0).clone().appendTo(thisSelected);
-			$(thisSelected).find('.option').children().addClass('active');
-			
-		})
-
-		
-		openCustomSelect();
-		
-	}
-
-
-	function openCustomSelect() {
-		$('.selected_option').click(function() {
-			console.log('клик');
-			var options = $(this).parent().find('.option');
-			var optHeight = $(options).outerHeight();
-			var optCount = $(options).length;
-			var heightWrap = optHeight * optCount;
-
-			$(this).parent().find('.wrap_options').css('height', heightWrap);
-			$(this).parent().find('.wrap_options').addClass('active');
-
-			var selectThis = $(this);
-			selectOption(selectThis);
-
-		})
-	}
-
-	
-	function destroyCustomSelect(selector) {
-		console.log('дестрой селект');
-
-
-		$(selector).find('.selected_option').remove()
-		$(selector).find('.option').unwrap();
-		$(selector).find('.option').children().unwrap();
-	}
-
-
-
-	function selectOption(selectThis) {
-		$(selectThis).parent().find('.wrap_options .option').click(function() {
-
-			var thisSelect = $(selectThis).parent().find('.selected_option')
-			$(selectThis).parent().find('.selected_option .option').remove();
-			$(this).clone().appendTo(thisSelect);
-			$(thisSelect).find('.option').children().addClass('active');
-			$(selectThis).parent().find('.wrap_options').css('height', 0);
-			$(selectThis).parent().find('.wrap_options').removeClass('active');
-		})
-	}
 
 
 
 
-</script>
 
-
-
-</body>
-</html>
+	</body>
+	</html>
