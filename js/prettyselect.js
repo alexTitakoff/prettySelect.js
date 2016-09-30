@@ -1,26 +1,13 @@
-
-
-
-
 (function($) { 
-    		// значение по умолчанию - ЗЕЛЁНЫЙ
-    		//var defaults = { color:'green' };
 
-    		// актуальные настройки, глобальные
-    		//var options;
+	$.fn.customizeSelect = function(){
+		var This =this; 
 
-    		$.fn.customizeSelect = function(){
-        	// при многократном вызове функции настройки будут сохранятся, и замещаться при необходимости
-        	//var options = $.extend({}, defaults, options, params);
-        	var This =this; 
-        	//console.log(this);
-
-        	//initializeCustomSelect();
+        	//initialization of the selected "selects"
         	customSelect(This);
 
-			//выборочая инициализация
+			//custom init
 			function customSelect(This) {
-				//console.log(This);
 				var This =  This;
 				$(This).addClass('custom_select');
 				$(This).children().wrap('<div class="option"></div>');
@@ -32,10 +19,7 @@
 				openCustomSelect();
 			}
 
-
-			//общая инициализация
 			function initializeCustomSelect() {	
-				console.log('начало инициализации');
 				$('.custom_select').each(function() {
 					$(this).children().wrap('<div class="option"></div>');
 					$('<div class="selected_option"></div>').prependTo(this);
@@ -45,12 +29,8 @@
 					$(thisSelected).find('.option').children().addClass('active');
 
 				})
-
-
 				openCustomSelect();
-
 			}
-
 
 			function openCustomSelect() {
 				$('.selected_option').click(function() {
@@ -69,7 +49,6 @@
 				})
 			}
 
-
 			function destroyCustomSelect(selector) {
 				console.log('дестрой селект');
 
@@ -78,7 +57,6 @@
 				$(selector).find('.option').unwrap();
 				$(selector).find('.option').children().unwrap();
 			}
-
 
 
 			function selectOption(selectThis) {
